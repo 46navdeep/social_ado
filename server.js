@@ -13,7 +13,9 @@ var session = require('express-session');
 
 var configDB = require('./config/database.js');
 
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url,function(req,res,err){
+  console.log("Connection to mongo DB Successful");
+});
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -26,8 +28,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes.js')(app,passport);
 require('./config/passport')(passport);
+require('./routes.js')(app,passport);
+
 
 app.listen(port,function(req,res){
   console.log("Server running at port 3000");
