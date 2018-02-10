@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var port = process.env.port || 3000;
+var port = process.env.port || 3002;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -33,5 +33,5 @@ require('./routes.js')(app,passport);
 
 
 app.listen(port,function(req,res){
-  console.log("Server running at port 3000");
+  console.log("Server running at port 3001");
 })
